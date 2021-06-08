@@ -38,9 +38,9 @@ namespace APIPractice.Controllers
 
         public async Task<IActionResult> Teacher()
         {
-            APIViewModel aPIViewModel = new APIViewModel();
-            aPIViewModel.Teacher = await _service.GetATeacher();
-            return View(aPIViewModel);
+            TeacherViewModel teacher = new TeacherViewModel();
+            teacher.Teacher = await _service.GetATeacher();
+            return View(teacher);
         }
 
         //public async Task<string> getSeleucidsAsync()
