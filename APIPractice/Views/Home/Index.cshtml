@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model APIPractice.ViewModels.APIViewModel
+
+<div class="text-center">
+    <h1 class="display-4">Super Fun API Calls</h1>
+</div>
+<p>
+    Random Number:<br> @Model.RandomNumber
+</p>
+<br>
+<br>
+<p>
+    Chuck Morris Joke: <br>@Model.ChucKNorris.Joke
+</p>
+<br>
+<br>
+<p>
+ Meet the Seleucids:<br> 
+</p>
+<table style="padding:5px;">
+    @foreach( Seleucid s in Model.seleucids)
+            {
+    <tr>
+        <td>@s.Name</td>
+        <td>@s.StartReign</td>
+        <td>@s.EndReign</td>
+        <td>
+            @foreach (string consort in s.Consorts)
+            { @consort<br>}
+        </td>
+    </tr>
+            }
+</table>
+<br>
+<br>
