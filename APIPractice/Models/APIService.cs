@@ -49,6 +49,18 @@ namespace APIPractice.Models
                 );
             }
         }
+
+        public async Task<TeacherList> GetTeachers()
+        {
+            var url = "https://seriouslyfundata.azurewebsites.net/api/yourteachers";
+            using (WebClient webClient = new WebClient())
+            {
+                return JsonConvert.DeserializeObject<TeacherList>(
+                    await webClient.DownloadStringTaskAsync(url)
+                );
+            }
+        }
+
         public async Task<SeleucidResponse> getSeleucidsAsync()
         {
             var url = "https://seriouslyfundata.azurewebsites.net/api/seleucids";

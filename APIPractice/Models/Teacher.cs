@@ -11,4 +11,9 @@ namespace APIPractice.Models
         public string HomeState { get; set; }
 
     }
+
+    public class TeacherList
+    {
+        public List<Teacher> Teachers { get; set; }
+    }
 }

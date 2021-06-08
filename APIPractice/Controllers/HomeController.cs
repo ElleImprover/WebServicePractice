@@ -40,6 +40,7 @@ namespace APIPractice.Controllers
         {
             TeacherViewModel teacher = new TeacherViewModel();
             teacher.Teacher = await _service.GetATeacher();
+            teacher.TeacherList = await _service.GetTeachers();
             return View(teacher);
         }
 

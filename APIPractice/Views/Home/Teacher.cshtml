@@ -10,3 +10,12 @@
 <p>
     Meet @Model.Teacher.Name who is from @Model.Teacher.HomeState
 </p>
+<table style="padding:5px;">
+    @foreach (Teacher t in Model.TeacherList)
+    {
+        <tr>
+            <td>@t.Name</td>
+            <td>@t.HomeState</td>
+        </tr>
+    }
+</table>
