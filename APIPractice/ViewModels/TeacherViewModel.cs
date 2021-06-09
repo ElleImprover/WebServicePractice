@@ -10,6 +10,6 @@ namespace APIPractice.ViewModels
     {
         public Teacher Teacher { get; set; }
 
-        public TeacherList TeacherList { get; set; }
+        public List<Teacher> TeacherList { get; set; }
     }
 }

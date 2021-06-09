@@ -25,7 +25,7 @@ namespace APIPractice.Models
             }
         }
 
-        public async Task<TeacherList> GetTeachers()
+        public async Task<List<Teacher>> GetTeachers()
         {
             HttpClient httpClient = new HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync("https://seriouslyfundata.azurewebsites.net/api/yourteachers");
@@ -34,8 +34,8 @@ namespace APIPractice.Models
 
             using (var stringReader = new System.IO.StringReader(responseContent))
             {
-                var serializer = new XmlSerializer(typeof(TeacherList));
-                return serializer.Deserialize(stringReader) as TeacherList;
+                var serializer = new XmlSerializer(typeof(List<Teacher>));
+                return serializer.Deserialize(stringReader) as List<Teacher>;
             }
         }
 
