@@ -25,6 +25,20 @@ namespace APIPractice.Models
             }
         }
 
+        public async Task<TeacherList> GetTeachers()
+        {
+            HttpClient httpClient = new HttpClient();
+            HttpResponseMessage response = await httpClient.GetAsync("https://seriouslyfundata.azurewebsites.net/api/yourteachers");
+            response.EnsureSuccessStatusCode();
+            string responseContent = await response.Content.ReadAsStringAsync();
+
+            using (var stringReader = new System.IO.StringReader(responseContent))
+            {
+                var serializer = new XmlSerializer(typeof(TeacherList));
+                return serializer.Deserialize(stringReader) as TeacherList;
+            }
+        }
+
         public async Task<int> getRandomNumberAsync()
         {
             var randomNum = 0;
@@ -50,16 +64,7 @@ namespace APIPractice.Models
             }
         }
 
-        public async Task<TeacherList> GetTeachers()
-        {
-            var url = "https://seriouslyfundata.azurewebsites.net/api/yourteachers";
-            using (WebClient webClient = new WebClient())
-            {
-                return JsonConvert.DeserializeObject<TeacherList>(
-                    await webClient.DownloadStringTaskAsync(url)
-                );
-            }
-        }
+
 
         public async Task<SeleucidResponse> getSeleucidsAsync()
         {

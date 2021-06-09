@@ -10,7 +10,6 @@ using Microsoft.Extensions.Logging;
 using APIPractice.ViewModels;
 using System.Net.Http;
 using System.Xml.Serialization;
-using APIPractice.Models;
 
 namespace APIPractice.Controllers
 {
@@ -39,8 +38,10 @@ namespace APIPractice.Controllers
         public async Task<IActionResult> Teacher()
         {
             TeacherViewModel teacher = new TeacherViewModel();
+            teacher.TeacherList = new TeacherList();
             teacher.Teacher = await _service.GetATeacher();
-            teacher.TeacherList = await _service.GetTeachers();
+            var tL = await _service.GetTeachers();
+            teacher.TeacherList = tL;
             return View(teacher);
         }
 
